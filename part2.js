@@ -1,6 +1,7 @@
-// ******************* PART 1
+// ******************* PART 2
 
-// SUMMARY - took the code from 308.3.1 and converted the string to an arrary
+// SUMMARY - took the code from 308.3.1 and converted the string to an arrary in part 1. 
+// Now I am starting where I left off with part 1
 
 /* As a final task, solve the following practical problem regarding string processing.
 Context: A CSV file, or “Comma-Separated Values” file is traditionally used to store tabular data
@@ -31,9 +32,20 @@ let cell1 = '', cell2 = '', cell3 = '', cell4 = '';
 let str = 'ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26'
 
 let myarr = str.split("  ")     // convert the string to an array
-//console.log('myarr: ' + myarr );
+console.log('myarr: ' + myarr);
 
 let commas = 0;
+let numcols = 0;
+
+let count = 0;
+
+// count the number of commas
+for (let i = 0; i < myarr.length; i++) {
+    if (myarr[i] === ',') {
+        count++;
+    }
+}
+console.log('count: ' + count);
 
 for (let i = 0; i < myarr.length; i++) {
     let current = myarr[i];
@@ -42,7 +54,6 @@ for (let i = 0; i < myarr.length; i++) {
 
     if (current == ',') {
         commas++;
-        // console.log('Found a comma'); 
     }
     else if (current == '\n') {                    // newline
         console.log(cell1, cell2, cell3, cell4);
@@ -61,6 +72,6 @@ for (let i = 0; i < myarr.length; i++) {
     }
 
     if (i == myarr.length - 1) {
-        console.log(cell1, cell2, cell3, cell4);
+        //  console.log(cell1, cell2, cell3, cell4);
     }
 }
