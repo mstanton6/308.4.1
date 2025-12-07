@@ -31,10 +31,11 @@ console.log(cell1, cell2, cell3, cell4);
 let cell1 = '', cell2 = '', cell3 = '', cell4 = '';
 let str = 'ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26'
 
-let myarr = str.split(",") 
-/// console.log('myarr: ' + myarr);
+let myarr = str.split("  ")     // convert the string to an array
+//console.log('myarr: ' + myarr );
 
 let commas = 0;
+
 let numcols = 0;
 
 // count the number of commas
@@ -46,14 +47,22 @@ for (let i = 0; i < str.length; i++) {
     if (str[i] === '\n')
         break;
 }
+
 numcols = numcols + 1; // get the last one, so that the number of columns is number of columns plus 1
 console.log('Number of columns is: ' + numcols);
 
 
 // setup a 2 dim arrary
-let twoDim = new Array[];
+// let twoDim = new Array[];
 
 /// Now start the main logic
+
+// this is a test for the cell array
+
+let cellarr = new Array(numcols);
+cellarr[0] =1
+cellarr[1] =2
+console.log('cellarr: ' + cellarr[1]);
 
 for (let i = 0; i < myarr.length; i++) {
     let current = myarr[i];
@@ -62,6 +71,7 @@ for (let i = 0; i < myarr.length; i++) {
 
     if (current == ',') {
         commas++;
+        // console.log('Found a comma'); 
     }
     else if (current == '\n') {                    // newline
         console.log(cell1, cell2, cell3, cell4);
@@ -80,6 +90,6 @@ for (let i = 0; i < myarr.length; i++) {
     }
 
     if (i == myarr.length - 1) {
-          console.log(cell1, cell2, cell3, cell4);
+        console.log(cell1, cell2, cell3, cell4);
     }
 }
