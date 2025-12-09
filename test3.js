@@ -31,7 +31,8 @@ console.log(cell1, cell2, cell3, cell4);
 let cell1 = '', cell2 = '', cell3 = '', cell4 = '';
 let str = 'ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26'
 
-let myarr = str.split("  ")     // convert the string to an array
+// let myarr = str.split("  ")     // convert the string to an array
+let myarr = str.split( ) 
 //console.log('myarr: ' + myarr );
 
 let commas = 0;
@@ -54,18 +55,13 @@ for (let i = 0; i < str.length; i++) {
 numcols = numcols + 1; // get the last one, so that the number of columns is number of columns plus 1
 console.log('Number of columns is: ' + numcols);
 
-
-// setup a 2 dim arrary
-// let twoDim = new Array[];
-
 /// Now start the main logic
 
 // this is a test for the cell array
 
 let cellarr = new Array(numcols);
-//cellarr[0] =1
-cellarr[1] =2
-console.log('cellarr: ' + cellarr[1]);
+
+//console.log('cellarr: ' + cellarr[1]);
 
 for (let i = 0; i < myarr.length; i++) {
     let current = myarr[i];
@@ -78,38 +74,39 @@ for (let i = 0; i < myarr.length; i++) {
     }
     else if (current == '\n') {                    // newline
       //  console.log(cell1, cell2, cell3, cell4);
-        cell1 = ''; cell2 = ''; cell3 = ''; cell4 = '';
+       // cell1 = ''; cell2 = ''; cell3 = ''; cell4 = '';
+       cellarr = "";
         commas = 0;
 
-  /*      console.log('Output cellarr ***')
-        for(j=0; j < (numcols-1); j++){
-         
-           console.log(cellarr[j]);
-           cellarr[j] = '';
-         } 
-    */   
-    } else {
+  
+    } else {  // all other characters
         for(j=0; j < (numcols-1); j++){
          if (commas == j) {
          //  cellarr[j] += current; // cellarr[j].push(current); 
            cellarr.push(current);
          }  
         }
-        if (commas == 0) {
-            cell1 += current;
-        } else if (commas == 1) {
-            cell2 += current;
-        } else if (commas == 2) {
-            cell3 += current;
-        } else {
-            cell4 += current;
-        }
             
     }
 
-    if (i == myarr.length - 1) {
-       // console.log(cell1, cell2, cell3, cell4);
-    }
 }
 
- console.log('cellarr: ' + cellarr);
+ // console.log('cellarr: ' + cellarr);
+
+
+// // setup a 2 dim arrary
+
+let twoDim2 = [];
+
+for (let i = 0; i < myarr.length; i++) {
+    let row = Math.floor(i / numcols);
+    let col = i % numcols;
+
+    if (!twoDim2[row]) {
+        twoDim2[row] = [];
+    }
+
+    twoDim2[row][col] = myarr[i];
+}
+
+console.log(twoDim2); 

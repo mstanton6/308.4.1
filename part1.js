@@ -33,6 +33,7 @@ let str = 'ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Bl
 let myarr = str.split("  ")     // convert the string to an array
 //console.log('myarr: ' + myarr );
 
+console.log('Part 1: ');
 let commas = 0;
 
 for (let i = 0; i < myarr.length; i++) {
