@@ -63,7 +63,7 @@ console.log('Number of columns is: ' + numcols);
 // this is a test for the cell array
 
 let cellarr = new Array(numcols);
-cellarr[0] =1
+//cellarr[0] =1
 cellarr[1] =2
 console.log('cellarr: ' + cellarr[1]);
 
@@ -77,10 +77,24 @@ for (let i = 0; i < myarr.length; i++) {
         // console.log('Found a comma'); 
     }
     else if (current == '\n') {                    // newline
-        console.log(cell1, cell2, cell3, cell4);
+      //  console.log(cell1, cell2, cell3, cell4);
         cell1 = ''; cell2 = ''; cell3 = ''; cell4 = '';
         commas = 0;
+
+  /*      console.log('Output cellarr ***')
+        for(j=0; j < (numcols-1); j++){
+         
+           console.log(cellarr[j]);
+           cellarr[j] = '';
+         } 
+    */   
     } else {
+        for(j=0; j < (numcols-1); j++){
+         if (commas == j) {
+         //  cellarr[j] += current; // cellarr[j].push(current); 
+           cellarr.push(current);
+         }  
+        }
         if (commas == 0) {
             cell1 += current;
         } else if (commas == 1) {
@@ -90,9 +104,12 @@ for (let i = 0; i < myarr.length; i++) {
         } else {
             cell4 += current;
         }
+            
     }
 
     if (i == myarr.length - 1) {
-        console.log(cell1, cell2, cell3, cell4);
+       // console.log(cell1, cell2, cell3, cell4);
     }
 }
+
+ console.log('cellarr: ' + cellarr);

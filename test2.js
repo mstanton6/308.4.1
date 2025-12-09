@@ -54,17 +54,13 @@ for (let i = 0; i < str.length; i++) {
 numcols = numcols + 1; // get the last one, so that the number of columns is number of columns plus 1
 console.log('Number of columns is: ' + numcols);
 
-
-// setup a 2 dim arrary
-// let twoDim = new Array[];
-
 /// Now start the main logic
 
 // this is a test for the cell array
 
 let cellarr = new Array(numcols);
-cellarr[0] =1
-cellarr[1] =2
+//cellarr[0] =1
+//cellarr[1] =2
 console.log('cellarr: ' + cellarr[1]);
 
 for (let i = 0; i < myarr.length; i++) {
@@ -77,22 +73,42 @@ for (let i = 0; i < myarr.length; i++) {
         // console.log('Found a comma'); 
     }
     else if (current == '\n') {                    // newline
-        console.log(cell1, cell2, cell3, cell4);
-        cell1 = ''; cell2 = ''; cell3 = ''; cell4 = '';
+      //  console.log(cell1, cell2, cell3, cell4);
+       // cell1 = ''; cell2 = ''; cell3 = ''; cell4 = '';
         commas = 0;
+
+  /*      console.log('Output cellarr ***')
+        for(j=0; j < (numcols-1); j++){
+         
+           console.log(cellarr[j]);
+           cellarr[j] = '';
+         } 
+    */   
     } else {
-        if (commas == 0) {
-            cell1 += current;
-        } else if (commas == 1) {
-            cell2 += current;
-        } else if (commas == 2) {
-            cell3 += current;
-        } else {
-            cell4 += current;
+        for(j=0; j < (numcols-1); j++){
+         if (commas == j) {
+         //  cellarr[j] += current; // cellarr[j].push(current); 
+           cellarr.push(current);
+         }  
         }
+            
     }
 
-    if (i == myarr.length - 1) {
-        console.log(cell1, cell2, cell3, cell4);
-    }
 }
+
+  console.log('cellarr: ' + cellarr);
+
+
+let twoDim= []; // setup a 2 dim arrary
+
+let k = 0;
+
+for (i = 0;i < myarr.length; i++){
+    if (i == numcols) {
+        k = k + 1;
+    }
+    twoDim.push(myarr[i]);
+    // twoDim[i][k] = myarr[i];
+}
+
+console.log('twoDim: ' + twoDim); 
