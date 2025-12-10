@@ -32,8 +32,14 @@ let cell1 = '', cell2 = '', cell3 = '', cell4 = '';
 let str = 'ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26'
 
 // let myarr = str.split("  ")     // convert the string to an array
-let myarr = str.split( ) 
-//console.log('myarr: ' + myarr );
+let myarr = str.split("\n")
+
+// PUT A LOOP HERE
+for (let r = 0; r < myarr.length; r++) {
+    //  console.log(myarr[r].split(","));
+    myarr[r] = myarr[r].split(",");
+}
+console.log('myarr: ', myarr);
 
 let commas = 0;
 
@@ -74,31 +80,31 @@ for (let i = 0; i < myarr.length; i++) {
         // console.log('Found a comma'); 
     }
     else if (current == '\n') {                    // newline
-      //  console.log(cell1, cell2, cell3, cell4);
-       // cell1 = ''; cell2 = ''; cell3 = ''; cell4 = '';
-       cellarr = "";
+        //  console.log(cell1, cell2, cell3, cell4);
+        // cell1 = ''; cell2 = ''; cell3 = ''; cell4 = '';
+        cellarr = "";
         commas = 0;
 
-  /*      console.log('Output cellarr ***')
-        for(j=0; j < (numcols-1); j++){
-         
-           console.log(cellarr[j]);
-           cellarr[j] = '';
-         } 
-    */   
+        /*      console.log('Output cellarr ***')
+              for(j=0; j < (numcols-1); j++){
+               
+                 console.log(cellarr[j]);
+                 cellarr[j] = '';
+               } 
+          */
     } else {  // all other characters
-        for(j=0; j < (numcols-1); j++){
-         if (commas == j) {
-         //  cellarr[j] += current; // cellarr[j].push(current); 
-           cellarr.push(current);
-         }  
+        for (j = 0; j < (numcols - 1); j++) {
+            if (commas == j) {
+                //  cellarr[j] += current; // cellarr[j].push(current); 
+                cellarr.push(current);
+            }
         }
-            
+
     }
 
 }
 
- // console.log('cellarr: ' + cellarr);
+// console.log('cellarr: ' + cellarr);
 
 
 // // setup a 2 dim arrary
@@ -111,7 +117,7 @@ let twoDim2 = [];
 
 let k = 0;
 
-for (let i = 0;i < myarr.length; i++){
+for (let i = 0; i < myarr.length; i++) {
     let row = Math.floor(i / numcols);
     let col = i % numcols;
 
@@ -120,10 +126,76 @@ for (let i = 0;i < myarr.length; i++){
     }
 
     twoDim2[row][col] = myarr[i];
-    
-}
-console.log('part2');
-console.log(twoDim2);  
 
+}
+console.log('part2');      /// End of part 2
+console.log(twoDim2);
+
+/////// PART 3
+
+/* becomes
+[{ id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+ { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
+ { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
+ { id: "98", name: "Bill", occupation: "Doctor’s Assistant", age: "26" }]
+*/
 console.log('part3');
 
+let twoDim3 = [];
+
+let Headarr = ["id", "name", "occupation", "age"];
+
+// console.log('Headarr: ' + Headarr);
+
+for (let i = 0; i < myarr.length; i++) {
+
+    for (let j = 0; j < myarr[i].length; j++) {
+          // console.log(myarr[i][j]);
+          
+          
+        if (!twoDim3[i]) {
+            twoDim3[i] = [];
+        }
+        twoDim3[i][j] = myarr[i][j];
+
+        if (i == 0) {
+            twoDim3[i][j] = myarr[i][j];
+        }
+        else {
+            twoDim3[i][j] = Headarr[j] + ": " + myarr[i][j];     /// ******* This is what is not working
+        }
+
+        // console.log(twoDim3[i][j]);
+    }
+}
+console.log('twodim3 :' + twoDim3);
+
+//// console.log(twoDim3);
+
+/////// PART 4 - Sorting and Manipulating Data
+
+// Insert the following object at index 1:
+// { id: "48", name: "Barry", occupation: "Runner", age: "25" }
+
+// Add the following object to the end of the array:
+// { id: "7", name: "Bilbo", occupation: "None", age: "111" }
+
+console.log('part4');
+
+/// Object added At the end of the array
+
+twoDim3.push(`id: "7", name: "Bilbo", occupation: "None", age: "111"`);
+
+// Object added At index 1
+const itemToInsert = 'id: "48", name: "Barry", occupation: "Runner", age: "25"';
+
+twoDim3.splice(1, 0, itemToInsert);
+
+////  console.log(twoDim3);
+
+// Finally, use the values of each object within the array and the array’s length property to calculate the average age of the group.
+// This calculation should be accomplished using a loop.
+
+/////// PART 5 - Full Circle
+
+// 
