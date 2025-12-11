@@ -170,12 +170,11 @@ console.log(twoDim3);
 let age =0;
 for (let i = 1; i < twoDim2.length; i++) {
 
-
-   // for (let j = 0; j < twoDim3[i].length; j++) {
-        age = twoDim2[3, i]
-        console.log('Age is: ' + age);
-   // }
+    age += Number(twoDim2[i][3]);
+       
 }
+
+console.log('The average age of the group is: ' + age / (twoDim2.length-1) );
 
 /////// PART 5 - Full Circle
 
@@ -187,9 +186,9 @@ for (let i = 0; i < myarr.length; i++) {
 
     for (let j = 0; j < myarr[i].length; j++) {
         element = myarr[i][j];
-        if (j !== myarr[i].length - 1) {  
+       // if (j !== myarr[i].length - 1 && i != 3) {  
             element += ",";
-        }
+       // }
         thestr += element;
     }
 }
