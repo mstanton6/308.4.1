@@ -31,15 +31,12 @@ console.log(cell1, cell2, cell3, cell4);
 let cell1 = '', cell2 = '', cell3 = '', cell4 = '';
 let str = 'ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26'
 
-// let myarr = str.split("  ")     // convert the string to an array
 let myarr = str.split("\n")
 
-// PUT A LOOP HERE
 for (let r = 0; r < myarr.length; r++) {
-    //  console.log(myarr[r].split(","));
     myarr[r] = myarr[r].split(",");
 }
-console.log('myarr: ', myarr);
+//console.log('myarr: ', myarr);
 
 let commas = 0;
 
@@ -59,39 +56,26 @@ for (let i = 0; i < str.length; i++) {
 }
 
 numcols = numcols + 1; // get the last one, so that the number of columns is number of columns plus 1
-// console.log('Number of columns is: ' + numcols);
 
 /// Now start the main logic
 
 // this is a test for the cell array
 
 let cellarr = new Array(numcols);
-//cellarr[0] =1
-//cellarr[1] =2
-//console.log('cellarr: ' + cellarr[1]);
 
 for (let i = 0; i < myarr.length; i++) {
     let current = myarr[i];
 
     // check for commas
 
-    if (current == ',') {
+    if (current == ',') {                           // comma
         commas++;
         // console.log('Found a comma'); 
     }
     else if (current == '\n') {                    // newline
-        //  console.log(cell1, cell2, cell3, cell4);
-        // cell1 = ''; cell2 = ''; cell3 = ''; cell4 = '';
         cellarr = "";
         commas = 0;
 
-        /*      console.log('Output cellarr ***')
-              for(j=0; j < (numcols-1); j++){
-               
-                 console.log(cellarr[j]);
-                 cellarr[j] = '';
-               } 
-          */
     } else {  // all other characters
         for (j = 0; j < (numcols - 1); j++) {
             if (commas == j) {
@@ -104,30 +88,25 @@ for (let i = 0; i < myarr.length; i++) {
 
 }
 
-// console.log('cellarr: ' + cellarr);
-
-
 // // setup a 2 dim arrary
 
-//let twoDim2 = [[], []];
 let twoDim2 = [];
-//
-//twoDim2[0][0] = "Hi";
-//
 
 let k = 0;
 
 for (let i = 0; i < myarr.length; i++) {
-    let row = Math.floor(i / numcols);
-    let col = i % numcols;
 
-    if (!twoDim2[row]) {
-        twoDim2[row] = [];
+    for (let j = 0; j < myarr[i].length; j++) {
+
+        if (!twoDim2[i]) {
+            twoDim2[i] = [];
+        }
+
+        twoDim2[i][j] = myarr[i][j];
     }
 
-    twoDim2[row][col] = myarr[i];
-
 }
+
 console.log('part2');      /// End of part 2
 console.log(twoDim2);
 
@@ -143,36 +122,26 @@ console.log('part3');
 
 let twoDim3 = [];
 
-let Headarr = ["id", "name", "occupation", "age"];
+for (let i = 1; i < myarr.length; i++) {
 
-// console.log('Headarr: ' + Headarr);
-
-for (let i = 0; i < myarr.length; i++) {
-
+    let person = {};
     for (let j = 0; j < myarr[i].length; j++) {
-          // console.log(myarr[i][j]);
-          
-          
-        if (!twoDim3[i]) {
-            twoDim3[i] = [];
-        }
-        twoDim3[i][j] = myarr[i][j];
 
-        if (i == 0) {
-            twoDim3[i][j] = myarr[i][j];
-        }
-        else {
-            twoDim3[i][j] = Headarr[j] + ": " + myarr[i][j];     /// ******* This is what is not working
-        }
+       person[myarr[0][j]] = myarr[i][j];
 
-        // console.log(twoDim3[i][j]);
     }
-}
-console.log('twodim3 :' + twoDim3);
+    // 1. create new person
+    // 2. use inner loop to populate person with new data
+    // 3. after inner loop, add the new person to the arrary
+    twoDim3.push(person);
 
-//// console.log(twoDim3);
+
+    }
+console.log(twoDim3);
 
 /////// PART 4 - Sorting and Manipulating Data
+
+//  Remove the last element from the sorted array.
 
 // Insert the following object at index 1:
 // { id: "48", name: "Barry", occupation: "Runner", age: "25" }
@@ -182,20 +151,49 @@ console.log('twodim3 :' + twoDim3);
 
 console.log('part4');
 
-/// Object added At the end of the array
+// Remove the last item from the array
+twoDim3.pop();
 
-twoDim3.push(`id: "7", name: "Bilbo", occupation: "None", age: "111"`);
+/// Object added At the end of the array
+twoDim3.push([`id: "7", name: "Bilbo", occupation: "None", age: "111"`]);
 
 // Object added At index 1
 const itemToInsert = 'id: "48", name: "Barry", occupation: "Runner", age: "25"';
 
 twoDim3.splice(1, 0, itemToInsert);
 
-////  console.log(twoDim3);
+console.log(twoDim3);
 
-// Finally, use the values of each object within the array and the array’s length property to calculate the average age of the group.
-// This calculation should be accomplished using a loop.
+// Finally, use the values of each object within the array and the array’s length property to 
+// calculate the average age of the group. This calculation should be accomplished using a loop.
+
+let age =0;
+for (let i = 1; i < twoDim2.length; i++) {
+
+
+   // for (let j = 0; j < twoDim3[i].length; j++) {
+        age = twoDim2[3, i]
+        console.log('Age is: ' + age);
+   // }
+}
 
 /////// PART 5 - Full Circle
 
 // 
+let thestr = ""
+let element = ""
+
+for (let i = 0; i < myarr.length; i++) {
+
+    for (let j = 0; j < myarr[i].length; j++) {
+        element = myarr[i][j];
+        if (j !== myarr[i].length - 1) {  
+            element += ",";
+        }
+        thestr += element;
+    }
+}
+
+console.log('');
+console.log('part 5');
+console.log(thestr);
