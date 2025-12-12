@@ -167,10 +167,12 @@ console.log(twoDim3);
 // Finally, use the values of each object within the array and the array’s length property to 
 // calculate the average age of the group. This calculation should be accomplished using a loop.
 
+let headarr = ['Id', 'Name', 'Occupation', 'Age'];
+
 let age =0;
 for (let i = 1; i < twoDim2.length; i++) {
 
-    age += Number(twoDim2[i][3]);
+  age += Number(twoDim2[i][headarr.length -1]);
        
 }
 
@@ -178,7 +180,6 @@ console.log('The average age of the group is: ' + age / (twoDim2.length-1) );
 
 /////// PART 5 - Full Circle
 
-// 
 let thestr = ""
 let element = ""
 
@@ -186,9 +187,10 @@ for (let i = 0; i < myarr.length; i++) {
 
     for (let j = 0; j < myarr[i].length; j++) {
         element = myarr[i][j];
-       // if (j !== myarr[i].length - 1 && i != 3) {   
+  
+       if (!(i === myarr.length - 1 && j === 3)) {  
             element += ",";
-       // }
+        }
         thestr += element;
     }
 }
